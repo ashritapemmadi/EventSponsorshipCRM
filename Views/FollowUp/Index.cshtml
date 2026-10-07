@@ -1,0 +1,51 @@
+@model IEnumerable<EventSponsorshipCRM.Models.FollowUp>
+
+@{
+    ViewData["Title"] = "Follow-Ups";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Sponsor Follow-Ups</h2>
+
+        <a asp-action="Create" class="btn btn-primary">
+            Schedule Follow-Up
+        </a>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            No follow-ups scheduled yet.
+        </div>
+    }
+    else
+    {
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Sponsor</th>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Remarks</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var followUp in Model)
+                {
+                    <tr>
+                        <td>@followUp.SponsorName</td>
+                        <td>@followUp.FollowUpDate.ToString("dd-MM-yyyy")</td>
+                        <td>@followUp.FollowUpType</td>
+                        <td>@followUp.Remarks</td>
+                        <td>@followUp.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+</div>

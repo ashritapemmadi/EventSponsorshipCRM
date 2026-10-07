@@ -1,0 +1,54 @@
+@model IEnumerable<EventSponsorshipCRM.Models.Opportunity>
+
+@{
+    ViewData["Title"] = "Opportunities";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Sponsorship Opportunities</h2>
+
+        <a asp-action="Create" class="btn btn-primary">
+            Add Opportunity
+        </a>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            No sponsorship opportunities have been added yet.
+        </div>
+    }
+    else
+    {
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Opportunity</th>
+                    <th>Sponsor</th>
+                    <th>Amount</th>
+                    <th>Stage</th>
+                    <th>Probability</th>
+                    <th>Expected Close</th>
+                    <th>Weighted Pipeline</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var opportunity in Model)
+                {
+                    <tr>
+                        <td>@opportunity.OpportunityName</td>
+                        <td>@opportunity.SponsorName</td>
+                        <td>₹@opportunity.Amount</td>
+                        <td>@opportunity.Stage</td>
+                        <td>@opportunity.Probability%</td>
+                        <td>@opportunity.ExpectedCloseDate.ToString("dd-MM-yyyy")</td>
+                        <td>₹@(opportunity.Amount * opportunity.Probability / 100)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

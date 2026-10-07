@@ -1,0 +1,59 @@
+@model IEnumerable<EventSponsorshipCRM.Models.Sponsor>
+
+@{
+    ViewData["Title"] = "Sponsors";
+}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Event Sponsors</h2>
+        <a class="btn btn-primary" href="#">Add Sponsor</a>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            No sponsors have been added yet.
+        </div>
+    }
+    else
+    {
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Sponsor</th>
+                    <th>Contact Person</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var sponsor in Model)
+                {
+                    <tr>
+                        <td>@sponsor.SponsorCode</td>
+                        <td>@sponsor.SponsorName</td>
+                        <td>@sponsor.ContactPerson</td>
+                        <td>@sponsor.Email</td>
+                        <td>@sponsor.Phone</td>
+                        <td>@sponsor.Status</td>
+                        <td>
+    <a asp-action="Edit" asp-route-id="@sponsor.SponsorId" class="btn btn-sm btn-warning">
+        Edit
+    </a>
+    <form asp-action="Delete" asp-route-id="@sponsor.SponsorId" method="post" style="display:inline;">
+    <button type="submit" class="btn btn-sm btn-danger"
+            onclick="return confirm('Are you sure you want to delete this sponsor?');">
+        Delete
+    </button>
+</form>
+</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

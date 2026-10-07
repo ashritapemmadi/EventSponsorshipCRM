@@ -1,0 +1,36 @@
+@model IEnumerable<EventSponsorshipCRM.Models.AuditLog>
+
+@{
+    ViewData["Title"] = "Audit Log";
+}
+
+<div class="container mt-4">
+
+    <h2>Audit Log</h2>
+
+    <table class="table table-bordered table-hover mt-3">
+        <thead>
+            <tr>
+                <th>Action</th>
+                <th>Entity</th>
+                <th>Record ID</th>
+                <th>Details</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var log in Model)
+            {
+                <tr>
+                    <td>@log.Action</td>
+                    <td>@log.EntityName</td>
+                    <td>@log.RecordId</td>
+                    <td>@log.Details</td>
+                    <td>@log.CreatedDate.ToString("dd-MM-yyyy HH:mm")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

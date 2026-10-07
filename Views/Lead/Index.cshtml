@@ -1,0 +1,56 @@
+@model IEnumerable<EventSponsorshipCRM.Models.Lead>
+
+@{
+    ViewData["Title"] = "Leads";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Potential Sponsors</h2>
+
+        <a asp-action="Create" class="btn btn-primary">
+            Add Lead
+        </a>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            No leads have been added yet.
+        </div>
+    }
+    else
+    {
+        <table class="table table-bordered table-hover">
+
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Lead</th>
+                    <th>Company</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Status</th>
+                    <th>Expected Value</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var lead in Model)
+                {
+                    <tr>
+                        <td>@lead.LeadCode</td>
+                        <td>@lead.LeadName</td>
+                        <td>@lead.CompanyName</td>
+                        <td>@lead.Email</td>
+                        <td>@lead.Phone</td>
+                        <td>@lead.Status</td>
+                        <td>₹@lead.ExpectedValue</td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    }
+</div>

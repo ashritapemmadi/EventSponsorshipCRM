@@ -1,0 +1,59 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">Sponsorship Dashboard</h2>
+
+    <div class="row">
+
+        <div class="col-md-3 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6>Total Sponsors</h6>
+                    <h2>@ViewBag.TotalSponsors</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6>Potential Sponsors</h6>
+                    <h2>@ViewBag.TotalLeads</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6>Opportunities</h6>
+                    <h2>@ViewBag.TotalOpportunities</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6>Weighted Pipeline</h6>
+                    <h2>₹@ViewBag.WeightedPipeline</h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card mt-3 shadow-sm">
+        <div class="card-body">
+            <h5>Active Sponsorship Value</h5>
+            <h2>₹@ViewBag.TotalValue</h2>
+            <p class="text-muted">
+                Total expected value of active sponsorship opportunities.
+            </p>
+        </div>
+    </div>
+
+</div>
